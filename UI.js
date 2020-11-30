@@ -9,16 +9,17 @@ class UI {
                         <td>${person.street}</td>
                         <td>${person.postcode}</td>
                         <td>${person.phone}</td>
+                        <td><a href="#"><i class="fas fa-backspace"></i></a></td>
         `;
         // append tr to table
         contacts.appendChild(tr);
     }
 
-    alertMessage(message) {
+    alertMessage(message, style) {
         // create div for alert message
         const div = document.createElement('div');
         // add class to div
-        div.className = "alert";
+        div.className = `alert ${style}`;
         // create string value of message for div
         const text = document.createTextNode(message);
         // insert text into div
@@ -32,5 +33,10 @@ class UI {
         setTimeout(function () {
             document.querySelector(".alert").remove();
         }, 5000);
+    }
+
+    deletePersonFromTable(eventElement) {
+        const personContact = eventElement.parentElement.parentElement.parentElement;
+        personContact.remove();
     }
 }
